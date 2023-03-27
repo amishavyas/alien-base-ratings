@@ -136,7 +136,7 @@ const Consent = ({ nextPage }) => {
                 <li>You know you are free to withdrawal at any time.</li>
             </Typography>
 
-            <StyledButton handleClick={nextPage} text="Next Page" />
+            <StyledButton handleClick={nextPage} text="BEGIN STUDY" />
         </Container>
     );
 };

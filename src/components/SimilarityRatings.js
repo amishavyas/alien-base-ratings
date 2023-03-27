@@ -4,12 +4,18 @@ import { StyledButton, StyledSlider } from "../StyledElements";
 import styled from "styled-components";
 
 const Img = styled.img`
-    height: 400px;
-    width: 300px;
+    height: 350px;
+    width: 250px;
     padding: 15px;
 `;
 
-function SimilarityRatings({ label, stimOrder, nextPage, responses, setResponses }) {
+function SimilarityRatings({
+    label,
+    stimOrder,
+    nextPage,
+    responses,
+    setResponses,
+}) {
     const [trialNum, setTrialNum] = useState(0);
     const [currStim, setCurrStim] = useState([]);
     const [RT, setRT] = useState(0);
@@ -73,7 +79,7 @@ function SimilarityRatings({ label, stimOrder, nextPage, responses, setResponses
         <div>
             <LinearProgress
                 variant="determinate"
-                value={(trialNum / 5) * 100}
+                value={(trialNum / stimOrder.length) * 100}
                 sx={{
                     height: 10,
                     backgroundColor: `#c7d1bc`,
@@ -82,12 +88,18 @@ function SimilarityRatings({ label, stimOrder, nextPage, responses, setResponses
                     },
                 }}
             />
-            <Typography align="center" variant="h4" padding="3%" marginTop="20px">
-                <strong> Using the slider below, rate how similar the aliens are. </strong>
+            <Typography
+                align="center"
+                fontSize="28px"
+                padding="1%"
+                marginTop="20px"
+            >
+                <strong>
+                    Using the slider below, please indicate how similar you think the aliens are.
+                </strong>
             </Typography>
             <Container component="main" maxWidth="md" align="center">
                 
-
                 <Grid container direction="row" justifyContent="center">
                     <Img src={`../../images/${currStim[0]}.png`} />
                     <Img src={`../../images/${currStim[1]}.png`} />
@@ -102,18 +114,12 @@ function SimilarityRatings({ label, stimOrder, nextPage, responses, setResponses
                 />
                 <Typography
                     style={{
-                        color: "rgb(33,37,40)",
-                        textAlign: "left",
-                        fontSize: "30px",
+                        fontSize: "27px",
                         paddingTop: "1%",
                     }}
-                    component="h4"
-                    variant="h5"
                 >
-                     
-                    <span style={{ float: "left" }}>Very Similar</span>
-                    <span style={{ float: "right" }}>Very Different</span>
-                    
+                    <span style={{ float: "left" }}>Very Different</span>
+                    <span style={{ float: "right" }}>Very Similar</span>
                 </Typography>
                 <StyledButton handleClick={nextTrial} text="Next" />
             </Container>

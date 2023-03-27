@@ -62,7 +62,7 @@ const StyledButton = ({ handleClick, text }) => {
                 variant="contained"
                 style={{
                     color: "#212528",
-                    fontSize: "15px",
+                    fontSize: "17px",
                     backgroundColor: "#e4d09e",
                 }}
             >

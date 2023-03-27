@@ -10,12 +10,20 @@ const Img = styled.img`
     margin: auto;
 `;
 
-function Ratings({ imgOrder, label, dimensions, nextPage, responses, setResponses }) {
-    
+function Ratings({
+    imgOrder,
+    label,
+    dimensions,
+    nextPage,
+    responses,
+    setResponses,
+}) {
+    const [randomizedImages] = useState([...imgOrder]);
+    const [dimKeys] = useState(Object.keys(dimensions)); 
+    const [dimNum, setDimNum] = useState(0);
     const [currImg, setCurrImg] = useState(imgOrder[0]);
     const [trialNum, setTrialNum] = useState(0);
-    const [dimNum, setDimNum] = useState(0);
-    const [currDim, setCurrDim] = useState(Object.keys(dimensions)[dimNum]); 
+    const [currDim, setCurrDim] = useState(dimKeys[dimNum]);
     const [RT, setRT] = useState(0);
     const [slider, setSlider] = useState({
         value: 0,
@@ -30,13 +38,14 @@ function Ratings({ imgOrder, label, dimensions, nextPage, responses, setResponse
 
     const handleDim = () => {
         if (dimNum == 2) {
-            setDimNum(0); 
-            setCurrImg(imgOrder[imgOrder.indexOf(currImg) + 1]);
-        }
-        else {
+            setDimNum(0);
+            dimKeys.sort(() => Math.random() - 0.5);
+            setCurrDim(dimKeys[dimNum]); 
+            setCurrImg(randomizedImages[randomizedImages.indexOf(currImg) + 1]);
+        } else {
             setDimNum(dimNum + 1);
         }
-    }
+    };
 
     const nextTrial = () => {
         /*
@@ -57,9 +66,9 @@ function Ratings({ imgOrder, label, dimensions, nextPage, responses, setResponse
                     },
                 ],
             });
+            window.scrollTo(0, 0);
             setTrialNum(trialNum + 1);
-            handleDim(); 
-            
+            handleDim();
         } else {
             alert(
                 "Please move the slider from its default position to continue, even if your response is 0."
@@ -78,7 +87,7 @@ function Ratings({ imgOrder, label, dimensions, nextPage, responses, setResponse
 
     useEffect(() => {
         /* Runs only when currImg updates */
-        if (trialNum === (imgOrder.length * Object.keys(dimensions).length)) {
+        if (trialNum === imgOrder.length * dimKeys.length) {
             nextPage();
         } else {
             setTrial();
@@ -87,8 +96,14 @@ function Ratings({ imgOrder, label, dimensions, nextPage, responses, setResponse
 
     useEffect(() => {
         /* Runs only when dimNum updates */
-        setCurrDim(Object.keys(dimensions)[dimNum]);
+        setCurrDim(dimKeys[dimNum]);
     }, [dimNum]);
+
+    useEffect(() => {
+        randomizedImages.sort(() => Math.random() - 0.5);
+        dimKeys.sort(() => Math.random() - 0.5);
+        setCurrImg(randomizedImages[0]);
+    }, []);
 
     return (
         <div>
@@ -103,35 +118,34 @@ function Ratings({ imgOrder, label, dimensions, nextPage, responses, setResponse
                     },
                 }}
             />
-            
             <Container component="main" maxWidth="lg" align="center">
-                <Typography fontSize="25px" padding="2%" align="center">
+                <Typography fontSize="24px" padding="2%" align="center">
                     {dimensions[currDim].prompt}
                 </Typography>
                 <Img src={`../../images/${currImg}.png`} />
-                <StyledSlider
-                    value={slider.value}
-                    valueLabelDisplay="auto"
-                    onChange={handleSlider}
-                    min={-50}
-                    max={50}
-                    style={{ marginTop: "20px" }}
-                />
-                <Typography
-                    style={{
-                        color: "rgb(33,37,40)",
-                        textAlign: "left",
-                        fontSize: "25px",
-                        paddingTop: "1%",
-                    }}
-                    component="h4"
-                    variant="h5"
-                >
-                    <strong>
-                        <span style={{ float: "left" }}>{dimensions[currDim].scale[0]}</span>
-                        <span style={{ float: "right" }}>{dimensions[currDim].scale[1]}</span>
-                    </strong>
-                </Typography>
+                <Container maxWidth="md" align="center">
+                    <StyledSlider
+                        value={slider.value}
+                        valueLabelDisplay="auto"
+                        onChange={handleSlider}
+                        min={-50}
+                        max={50}
+                        style={{ marginTop: "20px" }}
+                    />
+                    <Typography
+                        style={{
+                            fontSize: "24px",
+                            paddingTop: "1%",
+                        }}
+                    >
+                        <span style={{ float: "left" }}>
+                            {dimensions[currDim].scale[0]}
+                        </span>
+                        <span style={{ float: "right" }}>
+                            {dimensions[currDim].scale[1]}
+                        </span>
+                    </Typography>
+                </Container>
                 <StyledButton handleClick={nextTrial} text="Next" />
             </Container>
         </div>
