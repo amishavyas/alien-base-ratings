@@ -78,15 +78,20 @@ const StyledSlider = styled(Slider)({
     "& .MuiSlider-track": {
         border: "none",
     },
-    "& .MuiSlider-thumb": {
-        height: 15,
-        width: 15,
-        backgroundColor: "beige",
-        border: "1px solid darkbeige",
-        boxShadow: "lightgrey 0 1px 1px",
-        "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
+    "& .MuiSlider-thumb":{
+        "&:hover, &.Mui-active": {
             boxShadow: "#ccc 0 2px 2px",
+            backgroundColor: "beige",
         },
+
+        "&:before":{
+            boxShadow: "none",
+            backgroundColor: "transparent",
+        },
+        backgroundColor: "transparent",
+        boxShadow: "none",
+        height: 15,
+        width: 15,  
     },
     "& .MuiSlider-valueLabel": {
         lineHeight: 1.2,

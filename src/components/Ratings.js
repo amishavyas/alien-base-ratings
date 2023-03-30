@@ -19,31 +19,45 @@ function Ratings({
     setResponses,
 }) {
     const [randomizedImages] = useState([...imgOrder]);
-    const [dimKeys] = useState(Object.keys(dimensions)); 
+    const [dimKeys] = useState(Object.keys(dimensions));
     const [dimNum, setDimNum] = useState(0);
-    const [currImg, setCurrImg] = useState(imgOrder[0]);
+    const [currImg, setCurrImg] = useState('');
     const [trialNum, setTrialNum] = useState(0);
     const [currDim, setCurrDim] = useState(dimKeys[dimNum]);
     const [RT, setRT] = useState(0);
     const [slider, setSlider] = useState({
-        value: 0,
+        value: -50,
         moved: false,
     });
 
     const setTrial = () => {
         /* Resetting states (RT, new stim, slider values) for the new trial */
         setRT(Date.now());
-        setSlider({ value: 0, moved: false });
+        setSlider({ value: -50, moved: false });
     };
 
+    const delayedStimDisplay = (imgIndex) => {
+        setCurrImg(['blank']); 
+        setTimeout(() => {
+            setCurrImg(randomizedImages[imgIndex]);
+        }, 500);
+    }
+
+    const setRandomizedImages = () => {
+        randomizedImages.sort(() => Math.random() - 0.5);
+        delayedStimDisplay(0); 
+        console.log(randomizedImages, dimKeys);
+    }
+
     const handleDim = () => {
-        if (dimNum == 2) {
-            setDimNum(0);
-            dimKeys.sort(() => Math.random() - 0.5);
-            setCurrDim(dimKeys[dimNum]); 
-            setCurrImg(randomizedImages[randomizedImages.indexOf(currImg) + 1]);
-        } else {
+        console.log("NOT handle dim", trialNum, imgOrder.length); 
+        if ((trialNum % imgOrder.length === 0) && (trialNum !== 0)) {
+            console.log("handle dim", trialNum % imgOrder.length); 
+            setRandomizedImages(); 
             setDimNum(dimNum + 1);
+
+        } else {     
+            delayedStimDisplay(randomizedImages.indexOf(currImg) + 1);     
         }
     };
 
@@ -68,7 +82,7 @@ function Ratings({
             });
             window.scrollTo(0, 0);
             setTrialNum(trialNum + 1);
-            handleDim();
+            
         } else {
             alert(
                 "Please move the slider from its default position to continue, even if your response is 0."
@@ -87,6 +101,7 @@ function Ratings({
 
     useEffect(() => {
         /* Runs only when currImg updates */
+        handleDim();
         if (trialNum === imgOrder.length * dimKeys.length) {
             nextPage();
         } else {
@@ -97,12 +112,13 @@ function Ratings({
     useEffect(() => {
         /* Runs only when dimNum updates */
         setCurrDim(dimKeys[dimNum]);
+        console.log("CHANGE IN DIM NUM"); 
     }, [dimNum]);
 
     useEffect(() => {
-        randomizedImages.sort(() => Math.random() - 0.5);
+        setRandomizedImages(); 
         dimKeys.sort(() => Math.random() - 0.5);
-        setCurrImg(randomizedImages[0]);
+        setCurrDim(dimKeys[dimNum]);
     }, []);
 
     return (
@@ -119,10 +135,12 @@ function Ratings({
                 }}
             />
             <Container component="main" maxWidth="lg" align="center">
-                <Typography fontSize="24px" padding="2%" align="center">
-                    {dimensions[currDim].prompt}
+                <Typography fontSize="21px" padding="2%" align="center">
+                    {dimensions[currDim].prompt[0]}
                 </Typography>
-                <Img src={`../../images/${currImg}.png`} />
+                <Img
+                    src={`http://scraplab.org/alien_test/images/${currImg}.png`}
+                />
                 <Container maxWidth="md" align="center">
                     <StyledSlider
                         value={slider.value}
@@ -134,7 +152,7 @@ function Ratings({
                     />
                     <Typography
                         style={{
-                            fontSize: "24px",
+                            fontSize: "20px",
                             paddingTop: "1%",
                         }}
                     >
@@ -147,6 +165,9 @@ function Ratings({
                     </Typography>
                 </Container>
                 <StyledButton handleClick={nextTrial} text="Next" />
+                <Typography fontSize="20px" align="center">
+                    {dimensions[currDim].prompt[1]}
+                </Typography>
             </Container>
         </div>
     );

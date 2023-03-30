@@ -20,15 +20,18 @@ function SimilarityRatings({
     const [currStim, setCurrStim] = useState([]);
     const [RT, setRT] = useState(0);
     const [slider, setSlider] = useState({
-        value: 50,
+        value: -50,
         moved: false,
     });
 
     const setTrial = () => {
         /* Resetting states (RT, new stim, slider values) for the new trial */
         setRT(Date.now());
-        setSlider({ value: 50, moved: false });
-        setCurrStim(stimOrder[trialNum]);
+        setSlider({ value: -50, moved: false });
+        setCurrStim(["blank", "blank"]);
+        setTimeout(() => {
+            setCurrStim(stimOrder[trialNum]);
+        }, 500);
     };
 
     const nextTrial = () => {
@@ -90,31 +93,35 @@ function SimilarityRatings({
             />
             <Typography
                 align="center"
-                fontSize="28px"
+                fontSize="23px"
                 padding="1%"
                 marginTop="20px"
             >
                 <strong>
-                    Using the slider below, please indicate how similar you think the aliens are.
+                    Using the slider below, please indicate how similar you
+                    think the aliens are.
                 </strong>
             </Typography>
             <Container component="main" maxWidth="md" align="center">
-                
                 <Grid container direction="row" justifyContent="center">
-                    <Img src={`../../images/${currStim[0]}.png`} />
-                    <Img src={`../../images/${currStim[1]}.png`} />
+                    <Img
+                        src={`http://scraplab.org/alien_test/images/${currStim[0]}.png`}
+                    />
+                    <Img
+                        src={`http://scraplab.org/alien_test/images/${currStim[1]}.png`}
+                    />
                 </Grid>
                 <StyledSlider
                     value={slider.value}
                     valueLabelDisplay="auto"
                     onChange={handleSlider}
-                    min={0}
-                    max={100}
+                    min={-50}
+                    max={50}
                     style={{ marginTop: "20px" }}
                 />
                 <Typography
                     style={{
-                        fontSize: "27px",
+                        fontSize: "20px",
                         paddingTop: "1%",
                     }}
                 >

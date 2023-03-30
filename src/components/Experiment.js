@@ -24,8 +24,6 @@ function Experiment() {
                     Using the slider below, please indicate how powerful or
                     powerless you think this alien species is.
                 </strong>,
-                <br />,
-                <br />,
                 "Powerful aliens tend to be in control of any situation, influence what others think and do, and are seen as intelligent, conscientious, and dominant by other aliens. Powerless aliens are rarely in control of their situation, have little influence over others, and are seen as subordinates or followers.",
             ],
         },
@@ -36,8 +34,6 @@ function Experiment() {
                     Using the slider below, please indicate how social or
                     nonsocial you think this alien species is.
                 </strong>,
-                <br />,
-                <br />,
                 "Social aliens are extraverted, feel positively about their social position, are confident when leading or addressing groups of aliens, and enjoy and feel energized by social gatherings and interactions. Nonsocial aliens are introverted, consider themselves unpopular, feel awkward when they are the center of social attention, and are indifferent to social activities or feel drained by participating in them.",
             ],
         },
@@ -48,8 +44,6 @@ function Experiment() {
                     Using the slider below, please indicate how positive or
                     negative you think this alien species is.
                 </strong>,
-                <br />,
-                <br />,
                 "Positive aliens are kind to others, tend to get along well with aliens, and are perceived to be trustworthy, warm, open-minded, and emotionally stable. Negative aliens may be cold towards others and rarely get along well with aliens; they are perceived as dishonest, hostile, close-minded, and neurotic.",
             ],
         },
@@ -62,8 +56,6 @@ function Experiment() {
                     Using the slider below, please indicate how rational or
                     emotional you think this alien species' states are.
                 </strong>,
-                <br />,
-                <br />,
                 "Low rationality (or high emotionality) refers to states of feeling and emotional states (ex. happiness, sorrow). High rationality refers to states related to making decisions or inferences, or thinking in orderly, rational ways (ex. reason, planning).",
             ],
         },
@@ -74,8 +66,6 @@ function Experiment() {
                     Using the slider below, please indicate the social impact of
                     this alien species' states are.
                 </strong>,
-                <br />,
-                <br />,
                 "Low social impact refers to states that are NOT likely to affect anybody beyond the alien experiencing the state, because they are not at all intense or a type of state not directed towards other aliens (ex. tiredness, boredom). High social impact refers to states that are likely to affect aliens beyond the alien experiencing the state, because they are very intense or a type of state inherently directed towards other aliens (ex. excitement, outrage).",
             ],
         },
@@ -86,8 +76,6 @@ function Experiment() {
                     Using the slider below, please indicate how positive or
                     negative you think this alien species' states are.
                 </strong>,
-                <br />,
-                <br />,
                 "Negative states refer to disagreeable or unpleasant states (ex. distress, terror). Positive states refer to agreeable or pleasant states (ex. affection, pleasure).",
             ],
         },
@@ -106,9 +94,21 @@ function Experiment() {
         setPage(page + 1);
     };
 
+    async function preloader(){
+        /* Create new Video object for each video. Forces the browser to load all videos. */
+        imgOrder.forEach((media) => {
+            var img = document.createElement("img");
+            img.setAttribute(
+                "src",
+                "http://scraplab.org/alien_test/images/" + media + ".png"
+            );
+        });
+    }
+
     useEffect(() => {
         /* Runs when component mounts */
         setStimOrder(getPairwiseCombos(imgOrder));
+        preloader(); 
     }, []);
 
     const randomizeSimilarityStim = (stimList) => {

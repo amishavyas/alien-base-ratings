@@ -1,6 +1,7 @@
 {
-  "name": "react-template",
+  "name": "alien-base-ratings",
   "version": "0.1.0",
+  "homepage": "alien_test",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

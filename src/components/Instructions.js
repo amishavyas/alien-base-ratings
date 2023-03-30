@@ -15,7 +15,7 @@ function Instructions({ page, nextPage }) {
         switch (page) {
             case 2:
                 return (
-                    <Typography fontSize="22px">
+                    <Typography fontSize="21px">
                         <br />
                         Welcome to the experiment!
                         <br />
@@ -46,7 +46,7 @@ function Instructions({ page, nextPage }) {
                 );
             case 3:
                 return (
-                    <Typography fontSize="22px">
+                    <Typography fontSize="21px">
                         <br />
                         Your expedition team aims to study how different species
                         interact with each other and behave individually.
@@ -68,7 +68,7 @@ function Instructions({ page, nextPage }) {
                 );
             case 5:
                 return (
-                    <Typography fontSize="22px">
+                    <Typography fontSize="21px">
                         <br />
                         You have finished rating all pairs of alien species on
                         their similarity! <br />
