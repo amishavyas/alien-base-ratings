@@ -8,7 +8,7 @@ const Consent = ({ nextPage }) => {
             <Logos />
             <Title text="CONSENT TO TAKE PART IN RESEARCH" />
 
-            <Typography component="h2" variant="h6">
+            <Typography component="h2" variant="h6" align="center">
                 <br />
                 <strong> Dartmouth College </strong>
                 <br />

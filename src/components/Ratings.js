@@ -37,7 +37,7 @@ function Ratings({
     };
 
     const delayedStimDisplay = (imgIndex) => {
-        setCurrImg(['blank']); 
+        setCurrImg(['blank.png']); 
         setTimeout(() => {
             setCurrImg(randomizedImages[imgIndex]);
         }, 500);
@@ -125,7 +125,7 @@ function Ratings({
         <div>
             <LinearProgress
                 variant="determinate"
-                value={(trialNum / 12) * 100}
+                value={(trialNum / (imgOrder.length * 3)) * 100}
                 sx={{
                     height: 10,
                     backgroundColor: `#c7d1bc`,
@@ -138,10 +138,10 @@ function Ratings({
                 <Typography fontSize="21px" padding="2%" align="center">
                     {dimensions[currDim].prompt[0]}
                 </Typography>
-                <Img
-                    src={`http://scraplab.org/alien_test/images/${currImg}`}
-                />
+                <Img src={`http://scraplab.org/alien_test/images/${currImg}`} />
                 <Container maxWidth="md" align="center">
+                    <br />
+
                     <StyledSlider
                         value={slider.value}
                         valueLabelDisplay="auto"
@@ -167,6 +167,8 @@ function Ratings({
                 <StyledButton handleClick={nextTrial} text="Next" />
                 <Typography fontSize="20px" align="center">
                     {dimensions[currDim].prompt[1]}
+                    <br />
+                    <br />
                 </Typography>
             </Container>
         </div>

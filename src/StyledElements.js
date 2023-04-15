@@ -54,7 +54,7 @@ const StyledButton = ({ handleClick, text }) => {
             style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: "3%",
+                padding: "2%",
             }}
         >
             <Button
@@ -78,20 +78,20 @@ const StyledSlider = styled(Slider)({
     "& .MuiSlider-track": {
         border: "none",
     },
-    "& .MuiSlider-thumb":{
+    "& .MuiSlider-thumb": {
         "&:hover, &.Mui-active": {
             boxShadow: "#ccc 0 2px 2px",
             backgroundColor: "beige",
         },
 
-        "&:before":{
+        "&:before": {
             boxShadow: "none",
             backgroundColor: "transparent",
         },
         backgroundColor: "transparent",
         boxShadow: "none",
         height: 15,
-        width: 15,  
+        width: 15,
     },
     "& .MuiSlider-valueLabel": {
         lineHeight: 1.2,
@@ -119,7 +119,11 @@ const StyledSlider = styled(Slider)({
 const Title = ({ text }) => {
     return (
         <Typography
-            style={{ fontWeight: "bold", color: "#2a702d" }}
+            style={{
+                fontWeight: "bold",
+                color: "#2a702d",
+                textAlign: "center",
+            }}
             component="h1"
             variant="h4"
         >

@@ -176,8 +176,6 @@ for (var alienType of allStim) {
     const max = 11;
     var index = Math.floor(Math.random() * (max + 1));
     stimSubset.push(alienType[index]); 
-    console.log(alienType);
-    console.log(stimSubset);
 }
 
 console.log(stimSubset);
