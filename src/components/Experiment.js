@@ -5,15 +5,17 @@ import Instructions from "./Instructions";
 import Ratings from "./Ratings";
 import SimilarityRatings from "./SimilarityRatings";
 import Debrief from "./Debrief";
+import stimSubset from "../StimData"; 
 
 function Experiment() {
+    const imgOrder = stimSubset; 
     const [page, setPage] = useState(1);
     const [responses, setResponses] = useState({
         trait: [],
         state: [],
         similarity: [],
     });
-    const imgOrder = ["alien_1_v1", "alien_1_v2", "alien_2_v1", "alien_2_v2"];
+    //const imgOrder = ["alien_1_v1", "alien_1_v2", "alien_2_v1", "alien_2_v2"];
     const [similarityStimOrder, setStimOrder] = useState([]);
 
     const trait = {

@@ -139,7 +139,7 @@ function Ratings({
                     {dimensions[currDim].prompt[0]}
                 </Typography>
                 <Img
-                    src={`http://scraplab.org/alien_test/images/${currImg}.png`}
+                    src={`http://scraplab.org/alien_test/images/${currImg}`}
                 />
                 <Container maxWidth="md" align="center">
                     <StyledSlider

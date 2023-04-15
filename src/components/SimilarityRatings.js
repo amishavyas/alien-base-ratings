@@ -105,10 +105,10 @@ function SimilarityRatings({
             <Container component="main" maxWidth="md" align="center">
                 <Grid container direction="row" justifyContent="center">
                     <Img
-                        src={`http://scraplab.org/alien_test/images/${currStim[0]}.png`}
+                        src={`http://scraplab.org/alien_test/images/${currStim[0]}`}
                     />
                     <Img
-                        src={`http://scraplab.org/alien_test/images/${currStim[1]}.png`}
+                        src={`http://scraplab.org/alien_test/images/${currStim[1]}`}
                     />
                 </Grid>
                 <StyledSlider
