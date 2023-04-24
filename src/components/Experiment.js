@@ -8,16 +8,14 @@ import Debrief from "./Debrief";
 import stimSubset from "../StimData"; 
 
 function Experiment() {
-    const imgOrder = stimSubset; 
+    const imgOrder = stimSubset.slice(0,4); 
     const [page, setPage] = useState(1);
     const [responses, setResponses] = useState({
         trait: [],
         state: [],
         similarity: [],
     });
-    //const imgOrder = ["alien_1_v1", "alien_1_v2", "alien_2_v1", "alien_2_v2"];
     const [similarityStimOrder, setStimOrder] = useState([]);
-
     const trait = {
         power: {
             scale: ["Very Powerless", "Very Powerful"],
@@ -102,7 +100,7 @@ function Experiment() {
             var img = document.createElement("img");
             img.setAttribute(
                 "src",
-                "http://scraplab.org/alien_test/images/" + media + ".png"
+                "./images/" + media 
             );
         });
     }

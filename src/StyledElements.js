@@ -54,7 +54,8 @@ const StyledButton = ({ handleClick, text }) => {
             style={{
                 display: "flex",
                 justifyContent: "center",
-                padding: "2%",
+                padding: "3%",
+                textAlign: "center"
             }}
         >
             <Button
@@ -62,7 +63,7 @@ const StyledButton = ({ handleClick, text }) => {
                 variant="contained"
                 style={{
                     color: "#212528",
-                    fontSize: "17px",
+                    fontSize: "15px",
                     backgroundColor: "#e4d09e",
                 }}
             >

@@ -28,7 +28,7 @@ function SimilarityRatings({
         /* Resetting states (RT, new stim, slider values) for the new trial */
         setRT(Date.now());
         setSlider({ value: -50, moved: false });
-        setCurrStim(["blank", "blank"]);
+        setCurrStim(["blank.png", "blank.png"]);
         setTimeout(() => {
             setCurrStim(stimOrder[trialNum]);
         }, 500);
@@ -55,7 +55,7 @@ function SimilarityRatings({
             setTrialNum(trialNum + 1);
         } else {
             alert(
-                "Please move the slider from its default position to continue, even if your response is 0."
+                "Please enter your response by clicking on the slider to continue."
             );
         }
     };
@@ -91,12 +91,7 @@ function SimilarityRatings({
                     },
                 }}
             />
-            <Typography
-                align="center"
-                fontSize="23px"
-                padding="1%"
-                marginTop="20px"
-            >
+            <Typography align="center" fontSize="23px" padding="2%">
                 <strong>
                     Using the slider below, please indicate how similar you
                     think the aliens are.
@@ -104,12 +99,8 @@ function SimilarityRatings({
             </Typography>
             <Container component="main" maxWidth="md" align="center">
                 <Grid container direction="row" justifyContent="center">
-                    <Img
-                        src={`http://scraplab.org/alien_test/images/${currStim[0]}`}
-                    />
-                    <Img
-                        src={`http://scraplab.org/alien_test/images/${currStim[1]}`}
-                    />
+                    <Img src={`./images/${currStim[0]}`} />
+                    <Img src={`./images/${currStim[1]}`} />
                 </Grid>
                 <StyledSlider
                     value={slider.value}
@@ -119,12 +110,7 @@ function SimilarityRatings({
                     max={50}
                     style={{ marginTop: "20px" }}
                 />
-                <Typography
-                    style={{
-                        fontSize: "20px",
-                        paddingTop: "1%",
-                    }}
-                >
+                <Typography fontSize="20px">
                     <span style={{ float: "left" }}>Very Different</span>
                     <span style={{ float: "right" }}>Very Similar</span>
                 </Typography>

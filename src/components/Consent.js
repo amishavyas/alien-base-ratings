@@ -94,25 +94,25 @@ const Consent = ({ nextPage }) => {
                 to the public for scientific purposes. We will not record
                 identifying information from you, such as names, contact
                 information, or IP addresses. We may temporarily retain your
-                [Mechanical Turk/Prolific, depending on which platform is being
-                used] ID to ensure that we can pay you if you encounter a
-                technical issue. However, this information will be deleted after
-                data collection is complete, and will not be shared.
+                Mechanical Turk ID to ensure that we can pay you if you
+                encounter a technical issue. However, this information will be
+                deleted after data collection is complete, and will not be
+                shared.
                 <br />
                 <br />
                 <strong>Will you be paid to take part in this study?</strong>
                 <br />
-                Yes. You will be paid [insert $7.50/hr x duration of study].
-                This payment will be made electronically via the online platform
-                you are using to complete the study.
+                Yes. You will be paid $2.50. This payment will be made
+                electronically via the online platform you are using to complete
+                the study.
                 <br />
                 <br />
                 <strong>
                     Whom should you call with questions about this study?
                 </strong>
                 <br />
-                The leader of the research team for this study is Mark Thornton,
-                who can be reached at mark.a.thornton@dartmouth if you have
+                The leader of the research team for this study is Amisha Vyas,
+                who can be reached at amisha.vyas@dartmouth.edu if you have
                 questions, concerns, or complaints, if you would like to talk to
                 the research team, if you think the research has harmed you, or
                 if you wish to withdraw from the study.

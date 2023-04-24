@@ -19,7 +19,7 @@ function Instructions({ page, nextPage }) {
                         <Typography fontSize="21px" align="center">
                             <br />
                             Welcome to the experiment!
-                            <br />
+                             
                         </Typography>
                         <Typography fontSize="21px" align="left">
                             <br />
